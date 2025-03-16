@@ -8,12 +8,12 @@
 
 char *delete_first(char *s, char *pattern)
 {
-	/**
-	 * TODO: Implement this function
-	 */
+	char* string = strstr(s, pattern);
+	if (!string)
+		return s;
+	char *result = malloc(strlen(s) + 1 - strlen(pattern));
+	strncpy(result, s, string - s);
+	strcpy(result + (string - s), string+ strlen(pattern));
 
-	(void) s;
-	(void) pattern;
-
-	return NULL;
+	return result;
 }
