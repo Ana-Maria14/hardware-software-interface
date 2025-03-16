@@ -11,4 +11,6 @@
 
 void mirror(char *s);
 
+int length(const char *string);
+
 #endif /* MIRROR_H */
