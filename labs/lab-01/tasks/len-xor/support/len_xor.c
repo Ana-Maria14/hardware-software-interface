@@ -8,21 +8,20 @@
 
 int my_strlen(const char *str)
 {
-	/* TODO */
-
-	/**
-	 * The cast to (void) is used to avoid a compiler warning. Remove the line
-	 * below to find out what the warning is.
-	 *
-	 * Remove this cast when implementing the function.
-	 */
-	(void) str;
-
-	return -1;
+	int length = 0, i = 0;
+	while (*(str + i)) {
+		length++;
+		i++;
+	}
+	return length;
 }
 
 void equality_check(const char *str)
 {
-	/* TODO */
-	(void) str;
+	int n = my_strlen(str);
+	for (int i = 0; i < n; i++) {
+		if(!(*(str + i) ^ *(str + ((i + (1 << i)) % n)))) {
+			printf("Address of %c: %p\n", *(str + i), str + i);
+		} 
+	}
 }
