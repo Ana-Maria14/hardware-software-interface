@@ -8,11 +8,12 @@ section .text
 
 main:
 
-    mov al, 0x7F
+    mov al, 0x7F            ; 0x7F reprezinta 127 in baza 10
     PRINTF32 `the Overflow Flag is not active\n\x0`
     test al, al
     ;TODO: activate the Overflow Flag
-    jo overflow_flag
+    add al, 2          ; pentru a putea avea overflow (peste 127, sau mai putin de -128)
+    jo overflow_flag        
     jmp end
 
 overflow_flag:

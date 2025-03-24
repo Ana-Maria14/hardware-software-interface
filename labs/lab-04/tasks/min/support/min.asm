@@ -20,6 +20,12 @@ main:
                             ; DO NOT REMOVE/MODIFY THIS LINE
 
     ; TODO: find the minimum of the two numbers and store it in eax
+    
+    cmp eax, ebx
+    jg change                   ; daca eax > ebx se face swap pentru a afisa ebx
+    
     PRINTF32 `%d\n\x0`, eax ; print the minimum
 
+change:
+    xchg eax, ebx
     ret
