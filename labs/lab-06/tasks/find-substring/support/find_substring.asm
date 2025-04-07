@@ -14,8 +14,31 @@ global main
 main:
     push ebp
     mov ebp, esp
+    mov esi, source_text
+    mov edi, substring
+    
+initialize: 
+    mov eax, esi
+    mov edx, edi
+    mov ebx, 0
 
-    ; TODO: Print the start indices for all occurrences of the substring in source_text
+increment:
+    cmp byte[eax + 4 - ecx + 1], byte[edx + 4 - ecx + 1]
+    jne next
+    cmp ecx, 1
+    je print
+    loop increment
 
+next:
+    mov ecx, 4
+    inc eax
+    inc edx
+    inc ebx
+    jne initialize
+
+    jump increment
+
+print:
+    
     leave
     ret

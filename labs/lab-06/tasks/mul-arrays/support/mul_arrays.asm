@@ -16,9 +16,28 @@ global main
 main:
     push ebp
     mov ebp, esp
-    ; TODO: Traversing array1 and array2 and putting the result in array3
+    xor ecx, ecx
+
+iteration:
+    mov al, byte[array1 + ecx]     ; mut în al elementul din primul vector
+    mov bl, byte[array2 + ecx]     ; mut în bl elementul din al doilea vector
+    mul bl                         ; ax = al * bl
+    mov word[array3 + ecx * 2], ax
+
+    inc ecx                         
+    cmp ecx, 10
+    jl iteration
+
     PRINTF32 `The array that results from the product of the corresponding elements in array1 and array2 is:\n\x0`
-    ; TODO: Traversing array3 and displaying its elements
+    mov ecx, 0
+    mov eax, 0
+print:
+    mov ax, word[array3 + ecx * 2]
+    PRINTF32 `%hu \x0`, eax
+    inc ecx
+    cmp ecx, 10
+    jl print
+
     PRINTF32 `\n\x0`
     leave
     ret

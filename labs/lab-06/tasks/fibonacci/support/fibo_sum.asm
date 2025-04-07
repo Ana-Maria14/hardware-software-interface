@@ -17,8 +17,16 @@ main:
     ; TODO: calculate the sum of first N fibonacci numbers
     ;       (f(0) = 0, f(1) = 1)
     xor eax, eax     ;store the sum in eax
+    mov ecx, [N]
+    mov ebx, 0
+    mov edx, 1  ; primul element din sir
 
-    ; Use the loop instruction
+fibonacci:
+    add eax, ebx        ; stocheaza suma in eax
+    add ebx, edx        
+    xchg ebx, edx       ; edx ia valoarea elem i, iar ebx elem i - 1
+
+    loop fibonacci
 
     push eax
     push dword [N]
