@@ -14,9 +14,9 @@ main:
 
     PRINTF32 `[PRINTF32]: %s\n[PUTS]: \x0`, mystring
 
-    push mystring
-    call print_string
-    add esp, 4
+    push mystring           ; adauga argumentul in stiva
+    call print_string       ; apeleaza functia 
+    add esp, 4              ; reseteaza stiva
 
     leave
     ret

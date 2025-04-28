@@ -9,6 +9,11 @@ print_string:
     push ebx                ; preserve ebx as required by cdecl
 
     ; TODO: print the string
+    mov eax, [ebp + 8]      ; acceseaza argumentul
+
+    push eax                ; da push la argumentul lui puts
+    call puts               ; apeleaza puts
+    add esp, 4              ; reseteaza stiva
 
     pop ebx
     leave
