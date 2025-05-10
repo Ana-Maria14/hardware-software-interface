@@ -12,6 +12,11 @@ print_string_length:
     push ebx                ; preserve ebx as required by cdecl
 
     ; TODO: print the string length
+    mov ecx, [ebp + 8]      ; accesez argumentul functiei (stringul pe care vreau sa l printez)
+    push ecx                ; dau push la al doilea argument
+    push print_format       ; dau push la primul argument
+    call printf             ; apelez printf
+    add esp, 8              ; resetez stiva
 
     pop ebx
     leave
