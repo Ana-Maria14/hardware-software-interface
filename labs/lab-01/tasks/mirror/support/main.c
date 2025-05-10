@@ -8,7 +8,9 @@
 
 int main(void)
 {
-	/* TODO: Test function */
+	char *string = calloc(STR_SIZE, sizeof(char));
 
+	free(string);
+	
 	return 0;
 }
